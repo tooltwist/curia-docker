@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+#	Export the database to a local file.
+#	This is VERY important, because the Docker container
+#	will be destroyed as it is shut down.
+#
+bin=`dirname $0`
+. $bin/dbenv.sh
+
+#
+#	Find the latest dump file
+#
+last='0'
+for file in ${bin}/${DB_NAME}.dump.* ; do
+	# Ignore files with a non-numeric suffix
+	suffix=`echo ${file} | sed 's/.*\.dump\.\(.*\)$/\1/'`
+	num=`expr ${suffix} + 0 2>/dev/null` # Produces "" if non-numeric
+	[ "$num" != "" ] && [ "$num" -gt ${last} ] && last=$num
+done
+
+#
+#	Use the next number
+#
+next=`expr ${last} + 1`
+dumpfile=${bin}/${DB_NAME}.dump.${next}
+
+#
+#	Dump the data
+#
+ssh root@${DOCKER_IP} -p ${SSH_PORT} mysqldump --add-drop-table -u root ${DB_NAME} > ${dumpfile}
+if [ $? != 0 ] ; then
+	rm ${dumpfile}
+	echo ""
+	echo "Error: Dump failed"
+	echo ""
+	exit 1
+fi
+echo ""
+ls -l $dumpfile
+exit 0
