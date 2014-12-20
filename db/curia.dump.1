@@ -25,17 +25,29 @@ DROP TABLE IF EXISTS `element`;
 CREATE TABLE `element` (
   `tenant` varchar(20) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user` varchar(50) DEFAULT NULL,
+  `user_id` varchar(50) DEFAULT NULL,
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `root_id` int(11) NOT NULL,
-  `type` varchar(10) NOT NULL,
+  `type` varchar(20) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` int(11) NOT NULL,
+  `modified` int(11) NOT NULL,
   `short_description` varchar(100) DEFAULT NULL,
-  `description` text NOT NULL,
+  `description` text,
+  `url` varchar(200) DEFAULT NULL,
+  `filename` varchar(50) DEFAULT NULL,
+  `filetype` varchar(30) DEFAULT NULL,
+  `filesize` int(11) DEFAULT '0',
+  `position` int(6) DEFAULT '0',
+  `start_time` int(11) DEFAULT '0',
+  `end_time` int(11) DEFAULT '0',
+  `extra_properties` varchar(4096) DEFAULT NULL,
+  `external_id` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`tenant`,`id`),
   UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `external_id` (`tenant`,`type`,`external_id`),
   KEY `root_id` (`tenant`,`root_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1021 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=83997 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +56,7 @@ CREATE TABLE `element` (
 
 LOCK TABLES `element` WRITE;
 /*!40000 ALTER TABLE `element` DISABLE KEYS */;
-INSERT INTO `element` VALUES ('test',1,'',1,1,'page','2014-11-18 11:24:06','Root for SELECT tests','This page is used for testing Curia.'),('test',2,'Geophys',1,1,'post','2014-11-18 11:25:37',NULL,'Hi folks, Just upgraded to an iPhone 5S (from an old 3GS) specifically so I could use the Handoff feature in iOS 8.1 and OS X 10.10 (on my mid-2009 27\" iMac). From what I can gather from the Internet, this requires the phone be connected to the iMac via Bluetooth. When I went to connect the two, the iPhone throws up an error message which says it\'s not compatible.'),('test',3,'razmee209 ',2,1,'post','2014-11-18 11:26:37',NULL,'Sorry I have no idea on how to fix this issue. x)'),('test',4,'razmee209 ',1,1,'post','2014-11-18 11:27:37',NULL,'Hi folks,\r\nI Don\'t have access to the link but I think your Mac needs to be 2010 or 2012 and higher to use continuity.'),('test',5,'philcal',1,1,'post','2014-11-18 11:28:37',NULL,'My new Star Mobile phone is great!\r\n\r\nIt\'s got a nice big 6 inch screen.'),('test',6,'Geophys',1,1,'post','2014-11-18 11:29:37',NULL,'Hi folks,\r\nFlippin\' Apple. :/'),('test',7,'razmee209 ',6,1,'post','2014-11-18 11:30:37',NULL,'Can\'t live with \'em, can\'t live without \'em.'),('test',8,'Geophys',7,1,'post','2014-11-18 11:31:37',NULL,'Speak for yourself.'),('test',1000,'',1000,1000,'page','2014-11-18 11:24:06','Root for POST tests','This page is used for testing Curia.\r\n\r\nPosts with this as parent can be deleted at any time.'),('test',1001,NULL,1000,1000,'post','2014-11-18 11:34:47',NULL,'Test posting'),('test',1002,NULL,1000,1000,'post','2014-11-18 11:36:19',NULL,'Test posting'),('test',1003,NULL,1000,1000,'post','2014-11-18 11:36:20',NULL,'Test posting'),('test',1004,NULL,1000,1000,'post','2014-11-18 11:36:22',NULL,'Test posting'),('test',1005,NULL,1000,1000,'post','2014-11-18 15:22:56',NULL,'Test posting'),('test',1008,'philcal',1,1,'post','2014-11-18 18:38:21',NULL,'This is my first post from the screen.'),('test',1009,'philcal',1,1,'post','2014-11-18 18:40:59',NULL,'A chicken crossed the road.'),('test',1010,'philcal',1,1,'post','2014-11-18 18:41:15',NULL,'To get to the other side.'),('test',1011,'philcal',1,1,'post','2014-11-18 18:43:39',NULL,'I have no idea what was on the other side.'),('test',1012,'philcal',1,1,'post','2014-11-18 18:44:37',NULL,'But obviously the chicken thought it was important.'),('test',1013,'philcal',1,1,'post','2014-11-18 18:45:40',NULL,'111'),('test',1014,'philcal',1,1,'post','2014-11-18 18:46:05',NULL,'222'),('test',1015,'philcal',1,1,'post','2014-11-18 18:53:10',NULL,'333'),('test',1016,'philcal',1,1,'post','2014-11-18 18:55:25',NULL,'444'),('test',1017,'philcal',1,1,'post','2014-11-18 18:55:55',NULL,'555'),('test',1018,'philcal',1,1,'post','2014-11-18 18:58:22',NULL,'Here is a nice happy posting'),('test',1019,'philcal',1,1,'post','2014-11-19 12:27:50',NULL,'I saw a great website about frogs feet, and the best way to cook them.'),('test',1020,'philcal',1,1,'post','2014-11-28 12:40:22','Test post','Test post via curl');
+INSERT INTO `element` VALUES ('test',1,'',1,1,'page','2014-11-18 11:24:06',1416309846,1416309846,'Root for SELECT tests','This page is used for testing Curia.','','','',0,0,0,0,'0',NULL),('test',2,'Geophys',1,1,'post','2014-11-18 11:25:37',1416309937,1416309937,NULL,'Hi folks, Just upgraded to an iPhone 5S (from an old 3GS) specifically so I could use the Handoff feature in iOS 8.1 and OS X 10.10 (on my mid-2009 27\" iMac). From what I can gather from the Internet, this requires the phone be connected to the iMac via Bluetooth. When I went to connect the two, the iPhone throws up an error message which says it\'s not compatible.','','','',0,0,0,0,'0',NULL),('test',3,'razmee209 ',2,1,'post','2014-11-18 11:26:37',1416309997,1416309997,NULL,'Sorry I have no idea on how to fix this issue. x)','','','',0,0,0,0,'0',NULL),('test',4,'razmee209 ',1,1,'post','2014-11-18 11:27:37',1416310057,1416310057,NULL,'Hi folks,\r\nI Don\'t have access to the link but I think your Mac needs to be 2010 or 2012 and higher to use continuity.','','','',0,0,0,0,'0',NULL),('test',5,'philcal',1,1,'post','2014-11-18 11:28:37',1416310117,1416310117,NULL,'My new Star Mobile phone is great!\r\n\r\nIt\'s got a nice big 6 inch screen.','','','',0,0,0,0,'0',NULL),('test',6,'Geophys',1,1,'post','2014-11-18 11:29:37',1416310177,1416310177,NULL,'Hi folks,\r\nFlippin\' Apple. :/','','','',0,0,0,0,'0',NULL),('test',7,'razmee209 ',6,1,'post','2014-11-18 11:30:37',1416310237,1416310237,NULL,'Can\'t live with \'em, can\'t live without \'em.','','','',0,0,0,0,'0',NULL),('test',8,'Geophys',7,1,'post','2014-11-18 11:31:37',1416310297,1416310297,NULL,'Speak for yourself.','','','',0,0,0,0,'0',NULL),('test',1000,'',1000,1000,'page','2014-11-18 11:24:06',1416309846,1416309846,'Root for POST tests','This page is used for testing Curia.\r\n\r\nPosts with this as parent can be deleted at any time.','','','',0,0,0,0,'0',NULL),('test',1001,NULL,1000,1000,'post','2014-11-18 11:34:47',1416310487,1416310487,NULL,'Test posting','','','',0,0,0,0,'0',NULL),('test',1002,NULL,1000,1000,'post','2014-11-18 11:36:19',1416310579,1416310579,NULL,'Test posting','','','',0,0,0,0,'0',NULL),('test',1003,NULL,1000,1000,'post','2014-11-18 11:36:20',1416310580,1416310580,NULL,'Test posting','','','',0,0,0,0,'0',NULL),('test',1004,NULL,1000,1000,'post','2014-11-18 11:36:22',1416310582,1416310582,NULL,'Test posting','','','',0,0,0,0,'0',NULL),('test',1005,NULL,1000,1000,'post','2014-11-18 15:22:56',1416324176,1416324176,NULL,'Test posting','','','',0,0,0,0,'0',NULL),('test',1008,'philcal',1,1,'post','2014-11-18 18:38:21',1416335901,1416335901,NULL,'This is my first post from the screen.','','','',0,0,0,0,'0',NULL),('test',1009,'philcal',1,1,'post','2014-11-18 18:40:59',1416336059,1416336059,NULL,'A chicken crossed the road.','','','',0,0,0,0,'0',NULL),('test',1010,'philcal',1,1,'post','2014-11-18 18:41:15',1416336075,1416336075,NULL,'To get to the other side.','','','',0,0,0,0,'0',NULL),('test',1011,'philcal',1,1,'post','2014-11-18 18:43:39',1416336219,1416336219,NULL,'I have no idea what was on the other side.','','','',0,0,0,0,'0',NULL),('test',1012,'philcal',1,1,'post','2014-11-18 18:44:37',1416336277,1416336277,NULL,'But obviously the chicken thought it was important.','','','',0,0,0,0,'0',NULL),('test',1013,'philcal',1,1,'post','2014-11-18 18:45:40',1416336340,1416336340,NULL,'111','','','',0,0,0,0,'0',NULL),('test',1014,'philcal',1,1,'post','2014-11-18 18:46:05',1416336365,1416336365,NULL,'222','','','',0,0,0,0,'0',NULL),('test',1015,'philcal',1,1,'post','2014-11-18 18:53:10',1416336790,1416336790,NULL,'333','','','',0,0,0,0,'0',NULL),('test',1016,'philcal',1,1,'post','2014-11-18 18:55:25',1416336925,1416336925,NULL,'444','','','',0,0,0,0,'0',NULL),('test',1017,'philcal',1,1,'post','2014-11-18 18:55:55',1416336955,1416336955,NULL,'555','','','',0,0,0,0,'0',NULL),('test',1018,'philcal',1,1,'post','2014-11-18 18:58:22',1416337102,1416337102,NULL,'Here is a nice happy posting','','','',0,0,0,0,'0',NULL),('test',1019,'philcal',1,1,'post','2014-11-19 12:27:50',1416400070,1416400070,NULL,'I saw a great website about frogs feet, and the best way to cook them.','','','',0,0,0,0,'0',NULL),('test',1020,'philcal',1,1,'post','2014-11-28 12:40:22',1417178422,1417178422,'Test post','Test post via curl','','','',0,0,0,0,'0',NULL),('test',1021,'philcal',1,1,'post','2014-12-04 10:18:54',1417688334,1417688334,'Test post','Test post via curl','','','',0,0,0,0,'0',NULL),('test',1022,'philcal',1,1,'post','2014-12-05 07:44:50',1417765490,1417765490,'Test post','Test post via curl','','','',0,0,0,0,'0',NULL),('test',1023,'philcal',1,1,'post','2014-12-06 11:00:42',1417863642,1417863642,NULL,'Mr Squiggle was here.','','','',0,0,0,0,'0',NULL),('test',1024,'philcal',1,1,'post','2014-12-06 11:01:41',1417863701,1417863701,NULL,'And here as well.','','','',0,0,0,0,'0',NULL),('test',1031,'philcal',1,1,'post','2014-12-09 02:11:14',1418123600,1418123600,NULL,'6',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('test',1032,'philcal',1,1,'post','2014-12-09 02:12:24',1418123670,1418123670,NULL,'Smiley faces on the street.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('test',83996,'philcal',1000,1000,'post','2014-12-14 00:22:56',1418994344,1418994344,NULL,'Test posting',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `element` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,6 +101,34 @@ LOCK TABLES `thread_options` WRITE;
 /*!40000 ALTER TABLE `thread_options` DISABLE KEYS */;
 /*!40000 ALTER TABLE `thread_options` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `tenant` varchar(20) NOT NULL,
+  `user_id` int(50) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email_address` varchar(100) NOT NULL,
+  `external_id` varchar(50) NOT NULL,
+  PRIMARY KEY (`user_id`,`tenant`),
+  UNIQUE KEY `external_id` (`tenant`,`external_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3802 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -99,4 +139,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-30 16:10:27
+-- Dump completed on 2014-12-14 12:30:39

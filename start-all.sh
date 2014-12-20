@@ -3,11 +3,11 @@
 #	Start all the Docker containers required for this project
 #
 
-./db/run.sh
-./redis/run.sh
-./selenium/run.sh
-./solr/run.sh
+./db/start
+./redis/run
+./selenium/run
+./solr/run
 
 
 # Load the database
-./db/load.sh
+./db/load
