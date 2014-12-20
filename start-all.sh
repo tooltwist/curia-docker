@@ -5,8 +5,8 @@
 
 ./db/start
 ./redis/start
-./selenium/start
 ./solr/start
+./selenium/start
 
 
 # Load the database
