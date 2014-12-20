@@ -6,7 +6,7 @@ bin=`dirname $0`
 . $bin/dbenv.sh
 
 
-imagename=skyforum/test_db:v1
+imagename=${CONTAINER_NAME}-image:latest
 
 #
 #	Remove any old or running container
