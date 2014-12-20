@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+#	Start Selenium in a Docker container
+#
+dir=`dirname $0`
+. ${dir}/../env.sh
+
+#
+#	Stop the container
+#
+echo docker stop ${PROJECT}-solr
+docker stop ${PROJECT}-solr
+
+#
+#	Remove the container
+#
+echo docker rm ${PROJECT}-solr
+docker rm ${PROJECT}-solr

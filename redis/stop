@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+#	Start Selenium in a Docker container
+#
+dir=`dirname $0`
+. ${dir}/../env.sh
+
+#
+#	Stop the container
+#
+echo docker stop ${PROJECT}-redis
+docker stop ${PROJECT}-redis
+
+#
+#	Remove the container
+#
+echo docker rm ${PROJECT}-redis
+docker rm ${PROJECT}-redis

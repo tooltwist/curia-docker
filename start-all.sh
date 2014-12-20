@@ -4,10 +4,10 @@
 #
 
 ./db/start
-./redis/run
-./selenium/run
-./solr/run
+./redis/start
+./selenium/start
+./solr/start
 
 
 # Load the database
-./db/load
+#./db/load

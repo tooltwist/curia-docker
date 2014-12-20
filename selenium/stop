@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+#	Start Selenium in a Docker container
+#
+dir=`dirname $0`
+. ${dir}/../env.sh
+
+#
+#	Stop the container
+#
+echo docker stop ${PROJECT}-selenium
+docker stop ${PROJECT}-selenium
+
+#
+#	Remove the container
+#
+echo docker rm ${PROJECT}-selenium
+docker rm ${PROJECT}-selenium

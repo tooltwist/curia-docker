@@ -26,17 +26,12 @@ echo '** Start a new container using the new image.'
 echo "$" docker run --name ${CONTAINER_NAME} -p ${SSH_PORT}:22 -p ${HTTP_PORT}:80 -p ${DB_PORT}:3306 -d ${imagename}
          docker run --name ${CONTAINER_NAME} -p ${SSH_PORT}:22 -p ${HTTP_PORT}:80 -p ${DB_PORT}:3306 -d ${imagename}
 #		-v /etc/localtime:/etc/localtime:ro \
-[ $? != 0 ] && exit $?
-sleep 3
 
 
 
 if [ $? == 0 ] ; then
 
-	# Successful update
-	rm ${SQLFILE}
-	echo ""
-	echo "** Complete."
+	# Successful start
 	echo ""
 	echo ""
 	echo "        Host: ${DOCKER_IP}"
