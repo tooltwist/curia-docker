@@ -10,4 +10,4 @@
 
 
 # Load the database
-#./db/load
+./db/load
