@@ -3,7 +3,7 @@
 #	Start the mysql database
 #
 bin=`dirname $0`
-. $bin/dbenv.sh
+. $bin/env.sh
 
 
 imagename=${CONTAINER_NAME}-image:latest

@@ -4,15 +4,16 @@
 #
 dir=`dirname $0`
 . ${dir}/../env.sh
+CONTAINER_NAME=${PROJECT}-redis
 
 #
 #	Stop the container
 #
-echo docker stop ${PROJECT}-redis
-docker stop ${PROJECT}-redis
+echo docker stop ${CONTAINER_NAME}
+docker stop ${CONTAINER_NAME}
 
 #
 #	Remove the container
 #
-echo docker rm ${PROJECT}-redis
-docker rm ${PROJECT}-redis
+echo docker rm ${CONTAINER_NAME}
+docker rm ${CONTAINER_NAME}

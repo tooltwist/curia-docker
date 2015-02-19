@@ -3,7 +3,7 @@
 #	Save database contents and stop the Docker container.
 #
 bin=`dirname $0`
-. $bin/dbenv.sh
+. $bin/env.sh
 
 ${bin}/dump && \
 docker stop ${CONTAINER_NAME}

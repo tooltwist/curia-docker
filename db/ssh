@@ -3,7 +3,7 @@
 #	Use SSH to log into the Mysql Docker container.
 #
 bin=`dirname $0`
-. $bin/dbenv.sh
+. $bin/env.sh
 
 echo ssh root@${DOCKER_IP} -p ${SSH_PORT} "$@"
 ssh root@${DOCKER_IP} -p ${SSH_PORT} "$@"

@@ -5,5 +5,19 @@
 dir=`dirname $0`
 . ${dir}/../env.sh
 
-#sudo docker run --rm --name ${PROJECT}-selenium --privileged -p 4444:4444 -p 5900:5900 elgalu/docker-selenium
-docker run --name ${PROJECT}-selenium -d --privileged -p 4444:4444 -p 5900:5900 elgalu/docker-selenium
+CONTAINER_NAME=${PROJECT}-selenium
+
+#
+#	Remove any old or running container
+#
+echo ''
+echo '** Remove any old container.'
+echo "$" docker stop ${CONTAINER_NAME}
+         docker stop ${CONTAINER_NAME}
+echo "$" docker rm ${CONTAINER_NAME}
+         docker rm ${CONTAINER_NAME}
+echo ''
+
+#sudo docker run --rm --name ${CONTAINER_NAME} --privileged -p 4444:4444 -p 5900:5900 elgalu/docker-selenium
+echo "$" docker run --name ${CONTAINER_NAME} -d --privileged -p 4444:4444 -p 5900:5900 elgalu/docker-selenium
+docker run --name ${CONTAINER_NAME} -d --privileged -p 4444:4444 -p 5900:5900 elgalu/docker-selenium

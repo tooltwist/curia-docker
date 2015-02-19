@@ -5,7 +5,7 @@
 #	will be destroyed as it is shut down.
 #
 bin=`dirname $0`
-. $bin/dbenv.sh
+. $bin/env.sh
 
 #
 # Find the highest numbered file

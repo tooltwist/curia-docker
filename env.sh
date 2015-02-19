@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#	Swt varibles for Docker containers
+#	Set varibles for Docker containers
 #
 
 export PROJECT=curia
